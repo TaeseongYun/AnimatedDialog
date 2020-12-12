@@ -25,21 +25,9 @@ class MainActivity : AppCompatActivity() {
             .build()
     }
 
-//    private val dialog by lazy {
-//    MaterialStyledDialog.Builder(this)
-//        .setTitle("hi")
-//        .setTitle("Awesome!")
-//        .setDescription("What can we improve? Your feedback is always welcome.")
-//        .setNegativeText("close")
-////        .onNegative { finish() }
-//}
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-//        dialog.build().dismiss()
 
         button.setOnClickListener {
             dialog.show()
