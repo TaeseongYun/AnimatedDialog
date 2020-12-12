@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AnimatedDialog_DialogAnimationNormal">
+        <item name="android:windowEnterAnimation">@anim/ad_slide_up_normal</item>
+        <item name="android:windowExitAnimation">@anim/ad_slide_down_normal</item>
+    </style>
+
+    <style name="AnimatedDialog_DialogAnimationFast">
+        <item name="android:windowEnterAnimation">@anim/ad_slide_up_fast</item>
+        <item name="android:windowExitAnimation">@anim/ad_slide_down_fast</item>
+    </style>
+
+    <style name="AnimatedDialog_DialogAnimationSlow">
+        <item name="android:windowEnterAnimation">@anim/ad_slide_up_slow</item>
+        <item name="android:windowExitAnimation">@anim/ad_slide_down_slow</item>
+    </style>
+</resources>
