@@ -19,11 +19,9 @@ internal interface DialogBuilder {
 
     fun setWidth(width: Float): AnimatedDialog.Builder?
 
-    fun setHeight(height: Float): AnimatedDialog.Builder?
-
-    fun setPadding(left: Int, right: Int, top: Int, bottom: Int): AnimatedDialog.Builder?
-
     fun setPositiveBackground(drawable: Int): AnimatedDialog.Builder?
 
     fun setNegativeBackground(drawable: Int): AnimatedDialog.Builder?
+
+    fun setDialogSize(size: DialogSize): AnimatedDialog.Builder?
 }

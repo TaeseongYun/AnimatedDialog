@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--    <style name="AnimatedDialog">-->
+    <!--        <item name="android:background">@drawable/dialog_style</item>-->
+    <!--    </style>-->
+
     <style name="AnimatedDialog_DialogAnimationNormal">
         <item name="android:windowEnterAnimation">@anim/ad_slide_up_normal</item>
         <item name="android:windowExitAnimation">@anim/ad_slide_down_normal</item>

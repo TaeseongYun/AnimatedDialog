@@ -6,6 +6,7 @@ import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import kotlinx.android.synthetic.main.dialog_interface_layout.*
+import java.lang.IllegalArgumentException
 
 typealias setOnPositiveClickListener = (View) -> Unit
 typealias setOnNegativeClickListener = (View) -> Unit
@@ -39,12 +40,17 @@ class AnimatedDialog(private val builder: Builder) :
         dialog.positive_button.setOnClickListener(builder.positiveClickListener)
         dialog.cancel_button.setOnClickListener(builder.negativeClickListener)
 
+        if (builder.positiveBackground == 0 || builder.negativeBackground == 0) {
+            throw IllegalArgumentException("You have to set background positive button and negative button")
+        }
+
         if (builder.positiveBackground != 0 && builder.negativeBackground != 0) {
             dialog.positive_button.setBackgroundResource(builder.positiveBackground)
             dialog.cancel_button.setBackgroundResource(builder.negativeBackground)
         }
+
         dialog.window!!.attributes.width = builder.width.toInt()
-        dialog.window!!.attributes.height = builder.height.toInt()
+        dialog.window!!.attributes.height = builder.height
 
         dialog.window!!.attributes.windowAnimations = when (builder.duration) {
             Duration.FAST -> {
@@ -56,6 +62,12 @@ class AnimatedDialog(private val builder: Builder) :
             else -> {
                 R.style.AnimatedDialog_DialogAnimationSlow
             }
+        }
+
+        if (builder.ratio != 0) {
+            val dialogHeight = dialog.window!!.attributes.height
+            val ratioHeight = dialogHeight / builder.ratio
+            dialog.image_view.layoutParams.height = ratioHeight
         }
         return dialog
     }
@@ -72,13 +84,11 @@ class AnimatedDialog(private val builder: Builder) :
         internal var positiveClickListener: setOnPositiveClickListener? = null
         internal var negativeClickListener: setOnNegativeClickListener? = null
         internal var width = 0f
-        internal var height = 0f
-        internal var paddingLeft = 0
-        internal var paddingRight = 0
-        internal var paddingTop = 0
-        internal var paddingBottom = 0
+        internal var height = context.resources.displayMetrics.heightPixels
+        internal var ratio = 0
         internal var positiveBackground = 0
         internal var negativeBackground = 0
+        private var size: DialogSize? = null
 
         @DrawableRes
         internal var imageResource: Int = 0
@@ -132,16 +142,6 @@ class AnimatedDialog(private val builder: Builder) :
             return this
         }
 
-        override fun setHeight(height: Float): Builder {
-            this.height = height
-            return this
-        }
-
-        override fun setPadding(left: Int, right: Int, top: Int, bottom: Int): Builder {
-
-            return this
-        }
-
         override fun setPositiveBackground(drawable: Int): Builder {
             this.positiveBackground = drawable
             return this
@@ -152,8 +152,27 @@ class AnimatedDialog(private val builder: Builder) :
             return this
         }
 
+        override fun setDialogSize(size: DialogSize): Builder {
+            this.size = size
+            when (size) {
+                DialogSize.LARGE -> this.ratio = LARGE
+                DialogSize.NORMAL -> this.ratio = NORMAL
+                DialogSize.SMALL -> this.ratio = SMALL
+            }
+
+            this.height /= this.ratio
+            return this
+        }
+
         init {
             duration = Duration.NORMAL
+            size = DialogSize.LARGE
+        }
+
+        companion object {
+            private const val LARGE = 1
+            private const val NORMAL = 2
+            private const val SMALL = 3
         }
     }
 }

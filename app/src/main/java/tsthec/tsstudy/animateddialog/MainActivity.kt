@@ -2,10 +2,9 @@ package tsthec.tsstudy.animateddialog
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import tsthec.tsstudy.library.AnimatedDialog
+import tsthec.tsstudy.library.DialogSize
 import tsthec.tsstudy.library.Duration
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +19,7 @@ class MainActivity : AppCompatActivity() {
             .setPositiveBackground(R.drawable.bg_positive)
             .setNegativeBackground(R.drawable.bg_negative)
             .setWidth(resources.displayMetrics.widthPixels.toFloat())
-            .setHeight(resources.displayMetrics.heightPixels.toFloat() / 3)
+            .setDialogSize(DialogSize.SMALL)
             .setDuration(Duration.SLOW)
             .build()
     }
