@@ -1,15 +1,19 @@
-package tsthec.tsstudy.library
+package tsthec.tsstudy.library.builder
+
+import tsthec.tsstudy.library.property.DialogSize
+import tsthec.tsstudy.library.property.Duration
+import tsthec.tsstudy.library.dialog.AnimatedDialog
+import tsthec.tsstudy.library.dialog.setOnNegativeClickListener
+import tsthec.tsstudy.library.dialog.setOnPositiveClickListener
 
 internal interface DialogBuilder {
-    fun setTitle(title: CharSequence): AnimatedDialog.Builder?
+    fun setTitle(title: String): AnimatedDialog.Builder?
 
     fun setImage(resId: Int): AnimatedDialog.Builder?
 
-    fun setPositiveText(text: CharSequence): AnimatedDialog.Builder?
+    fun setPositiveText(text: String): AnimatedDialog.Builder?
 
-    fun setMessage(message: CharSequence): AnimatedDialog.Builder?
-
-    fun setNegativeText(text: CharSequence): AnimatedDialog.Builder?
+    fun setNegativeText(text: String): AnimatedDialog.Builder?
 
     fun setDuration(duration: Duration): AnimatedDialog.Builder?
 

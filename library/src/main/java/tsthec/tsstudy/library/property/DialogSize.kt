@@ -1,4 +1,4 @@
-package tsthec.tsstudy.library
+package tsthec.tsstudy.library.property
 
 enum class DialogSize {
     // 1 -> window size
