@@ -138,10 +138,7 @@ __ __ __ __ __ __ __
 ### Result 
 
 
-
-<img src="example.png" alt="drawing" width="150"/>
-
-<img src="example2.png" alt="drawing" width="60%" height="250px" object-fit="contain"/>
+![result](./example.gif)
 
 ### Reference
 
