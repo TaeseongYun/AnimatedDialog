@@ -24,7 +24,7 @@ allprojects {
 #### step2. add dependency
 ```
 dependencies {
-	implementation 'com.github.TaeseongYun:AnimatedDialog:1.0.0'
+	implementation 'com.github.TaeseongYun:AnimatedDialog:lastVersion'
 }
 ```
 
@@ -129,10 +129,22 @@ private val dialog by lazy {
 </LinearLayout>
 ```
 
-You need to set image_view, title, positive button and cancel button respectively as id in xml.
+#### You need to set image_view, title, positive button and cancel button respectively as id in xml.
 
 
-Result 
+__ __ __ __ __ __ __
 
-![결과물](./example.png)
+
+### Result 
+
+
+
+<img src="example.png" alt="drawing" width="150"/>
+
+<img src="example2.png" alt="drawing" width="60%" height="250px" object-fit="contain"/>
+
+### Reference
+
+[Dialog-Android](https://github.com/jianyuyouhun/AnimatedDialog)
+
 
