@@ -45,7 +45,7 @@ class AnimatedDialog(private val builder: Builder) :
         dialog.positive_button.setOnClickListener(builder.positiveClickListener)
         dialog.cancel_button.setOnClickListener(builder.negativeClickListener)
 
-        if (builder.positiveBackground == 0 || builder.negativeBackground == 0 || builder.imageResource == 0) {
+        if (builder.positiveBackground == 0 && builder.negativeBackground == 0 && builder.imageResource == 0) {
             throw IllegalArgumentException("You have to set background positive button, negative button and imageResource")
         }
 
@@ -54,7 +54,7 @@ class AnimatedDialog(private val builder: Builder) :
             dialog.cancel_button.setBackgroundResource(builder.negativeBackground)
         }
 
-        dialog.window!!.attributes.width = builder.width.toInt()
+        dialog.window!!.attributes.width = builder.width
         dialog.window!!.attributes.height = builder.height
 
         dialog.window!!.attributes.windowAnimations = when (builder.duration) {
@@ -88,7 +88,7 @@ class AnimatedDialog(private val builder: Builder) :
         internal var duration by ViewProperty(Duration.NORMAL)
         internal var positiveClickListener: setOnPositiveClickListener? = null
         internal var negativeClickListener: setOnNegativeClickListener? = null
-        internal var width by ViewProperty(0f)
+        internal var width by ViewProperty(context.resources.displayMetrics.widthPixels)
         internal var height by ViewProperty(context.resources.displayMetrics.heightPixels)
         internal var ratio by ViewProperty(0)
         internal var positiveBackground by ViewProperty(0)
@@ -134,11 +134,6 @@ class AnimatedDialog(private val builder: Builder) :
 
         override fun setNegativeClickListener(listener: setOnNegativeClickListener): Builder {
             this.negativeClickListener = listener
-            return this
-        }
-
-        override fun setWidth(width: Float): Builder {
-            this.width = width
             return this
         }
 
