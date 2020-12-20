@@ -54,7 +54,6 @@ private val dialog by lazy {
             //You have to set positive background and negative background when you use dialog
             .setPositiveBackground(R.drawable.bg_positive)
             .setNegativeBackground(R.drawable.bg_negative)
-            .setWidth(resources.displayMetrics.widthPixels.toFloat())
 
             /*
             you should to set custom click listener if you want it
