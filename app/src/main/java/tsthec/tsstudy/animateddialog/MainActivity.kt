@@ -2,11 +2,15 @@ package tsthec.tsstudy.animateddialog
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
 import kotlinx.android.synthetic.main.activity_main.*
+//import tsthec.tsstudy.library.AnimatedDialog
+//import tsthec.tsstudy.library.DialogSize
+//import tsthec.tsstudy.library.Duration
 import tsthec.tsstudy.library.dialog.AnimatedDialog
 import tsthec.tsstudy.library.property.DialogSize
 import tsthec.tsstudy.library.property.Duration
@@ -28,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private val dialog by lazy {
+        Log.e("widthPixels" , resources.displayMetrics.widthPixels.toFloat().toString())
         AnimatedDialog.Builder(this, R.style.MyDialogStyle)
             .setTitle("안녕하세요")
             .setNegativeText("취소")
@@ -35,7 +40,6 @@ class MainActivity : AppCompatActivity() {
             .setImage(R.mipmap.ic_launcher)
             .setPositiveBackground(R.drawable.bg_positive)
             .setNegativeBackground(R.drawable.bg_negative)
-            .setWidth(resources.displayMetrics.widthPixels.toFloat())
             .setDialogSize(DialogSize.SMALL)
             .setDuration(Duration.SLOW)
             .setPositiveClickListener { }
