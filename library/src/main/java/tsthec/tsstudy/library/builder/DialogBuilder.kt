@@ -21,8 +21,6 @@ internal interface DialogBuilder {
 
     fun setNegativeClickListener(listener: setOnNegativeClickListener): AnimatedDialog.Builder?
 
-    fun setWidth(width: Float): AnimatedDialog.Builder?
-
     fun setPositiveBackground(drawable: Int): AnimatedDialog.Builder?
 
     fun setNegativeBackground(drawable: Int): AnimatedDialog.Builder?
