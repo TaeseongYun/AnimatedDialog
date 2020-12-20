@@ -21,6 +21,17 @@ allprojects {
 }
 ```
 
+If you using build.gradle.kts then ..
+
+```
+allprojects {
+	repositories {
+		...
+		maven("https://jitpack.io")
+	}
+}
+```
+
 #### step2. add dependency
 ```
 dependencies {
@@ -68,6 +79,7 @@ private val dialog by lazy {
     }
 ```
 
+### Layout Interface
 - xml
 
 ```xml
@@ -128,9 +140,6 @@ private val dialog by lazy {
         tools:text="취소" />
 </LinearLayout>
 ```
-
-#### You need to set image_view, title, positive button and cancel button respectively as id in xml.
-
 
 __ __ __ __ __ __ __
 
